@@ -1,6 +1,5 @@
 import requests
 import pandas as pd
-import json
 
 
 def test_api():
@@ -16,12 +15,13 @@ def test_api():
                "Content-Type": "application/json"}
     payload = {
         "hashtag": hashtag,
-        "posts_data": posts_data,
-        "accounts_data": accounts_data,
+        "posts_data": posts_data[:1],
+        "accounts_data": accounts_data[:1],
     }
+
     result = requests.post(url=url, headers=headers, json=payload)
     print(result)
-    print(result.content)
+    print(result.json())
 
 
 if __name__ == "__main__":
