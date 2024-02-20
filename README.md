@@ -3,6 +3,7 @@ Setup python env
 virtualenv venv
 source venv/bin/activate
 pip install -r requirments.txt
+```
 run the app
 ```
 uvicorn src.main:app
