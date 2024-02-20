@@ -13,10 +13,6 @@ def logic_hashtag_heuristic(
     hashtag: str, posts_data: List[dict], accounts_data: List[dict]
 ) -> int:
     posts_df = pd.DataFrame(posts_data)
-    print("HERE")
-    print(len(posts_data))
-    print(posts_data[0].keys())
-
     accounts_df = pd.DataFrame(accounts_data)
     posts_df["hashtags"] = posts_df["hashtags"].str.lower()
     posts_df["hashtags_list"] = posts_df["hashtags"].str.split(

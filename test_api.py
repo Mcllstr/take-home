@@ -6,7 +6,6 @@ import json
 def test_api():
     posts_df = pd.read_csv("data/posts.tsv", sep="\t", lineterminator="\n")
     posts_df = posts_df.fillna("")
-    print(posts_df.columns)
     posts_data = posts_df.to_dict(orient="records")
     accounts_df = pd.read_csv("data/accounts.tsv", sep="\t", lineterminator="\n")
     accounts_df = accounts_df.fillna("")
