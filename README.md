@@ -3,6 +3,8 @@ Setup python env
 virtualenv venv
 source venv/bin/activate
 pip install -r requirments.txt
+run the app
+```
 uvicorn main:app
 ```
 To run the test script, open a second terminal, same directory
