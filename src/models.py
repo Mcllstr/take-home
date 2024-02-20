@@ -22,5 +22,10 @@ class PuppetPosterRequest(BaseModel):
     posts_data: List[PostRecord]
     accounts_data: List[AccountRecord]
 
+    # def to_jsonl(self):
+
+        
+
+
 class PuppetPosterResponse(BaseModel):
     count: int

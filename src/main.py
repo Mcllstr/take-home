@@ -3,22 +3,20 @@ from typing import List
 from fastapi import FastAPI
 import pandas as pd
 from rapidfuzz.distance.DamerauLevenshtein import normalized_similarity
-from models import PuppetPosterRequest, PuppetPosterResponse
+from .models import PuppetPosterRequest, PuppetPosterResponse
 
 
 app = FastAPI()
-
-
-@app.get("/")
-async def root():
-    print("HELLO HERE")
-    return {"message": "Hello World"}
 
 
 def logic_hashtag_heuristic(
     hashtag: str, posts_data: List[dict], accounts_data: List[dict]
 ) -> int:
     posts_df = pd.DataFrame(posts_data)
+    print("HERE")
+    print(len(posts_data))
+    print(posts_data[0].keys())
+
     accounts_df = pd.DataFrame(accounts_data)
     posts_df["hashtags"] = posts_df["hashtags"].str.lower()
     posts_df["hashtags_list"] = posts_df["hashtags"].str.split(
@@ -91,7 +89,6 @@ def logic_hashtag_heuristic(
 async def count_synchronous_puppet_poster_pairs(
     req: PuppetPosterRequest
 ):
-    pairs_count = logic_hashtag_heuristic(req.hashtag, 
-                                                    req.posts_data,
-                                                    req.accounts_data)
+    req = req.dict()
+    pairs_count = logic_hashtag_heuristic(**req)
     return PuppetPosterResponse(count=pairs_count)

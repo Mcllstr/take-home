@@ -4,10 +4,11 @@ import json
 
 
 def test_api():
-    posts_df = pd.read_csv("posts.tsv", sep="\t", lineterminator="\n")
+    posts_df = pd.read_csv("data/posts.tsv", sep="\t", lineterminator="\n")
     posts_df = posts_df.fillna("")
+    print(posts_df.columns)
     posts_data = posts_df.to_dict(orient="records")
-    accounts_df = pd.read_csv("accounts.tsv", sep="\t", lineterminator="\n")
+    accounts_df = pd.read_csv("data/accounts.tsv", sep="\t", lineterminator="\n")
     accounts_df = accounts_df.fillna("")
     accounts_data = accounts_df.to_dict(orient="records")
     hashtag = "#diedsuddenly"
@@ -19,7 +20,6 @@ def test_api():
         "posts_data": posts_data,
         "accounts_data": accounts_data,
     }
-    result = requests.get(url="http://127.0.0.1:8000/")
     result = requests.post(url=url, headers=headers, json=payload)
     print(result)
     print(result.content)
