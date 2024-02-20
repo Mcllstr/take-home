@@ -22,5 +22,9 @@ After a few seconds you should see a response like below
 
 ```
 <Response [200]>
-b'{"puppet_pairs":27}'
+b'{"count":27}'
 ```
+
+
+
+Method
