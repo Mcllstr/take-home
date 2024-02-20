@@ -16,7 +16,7 @@ class PostRecord(BaseModel):
     text: str
     hashtags: str
 
-
+    
 class PuppetPosterRequest(BaseModel):
     hashtag: Any
     posts_data: List[PostRecord]
